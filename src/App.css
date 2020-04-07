@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.MuiGridList-root {
+  margin: 3px !important;
+}
