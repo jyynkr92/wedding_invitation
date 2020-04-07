@@ -4,8 +4,23 @@ import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import BaseballIcon from "../img/ball-of-baseball.png";
 import Header from "./Header";
+import SimpleDialog from "./SimpleDialog";
 
 const Gallery = ({ changePage }) => {
+  const [open, setOpen] = React.useState(false);
+  const [image, setImage] = React.useState("");
+
+  const handleClickOpen = e => {
+    const { src } = e.target;
+    console.log(src);
+    setImage(src);
+    setOpen(true);
+  };
+
+  const handleClose = value => {
+    setOpen(false);
+  };
+
   const tileData = [
     { img: "./wedding/pic1.jpeg", cols: 1 },
     { img: "./wedding/pic3.jpeg", cols: 2 },
@@ -31,10 +46,11 @@ const Gallery = ({ changePage }) => {
       <GridList cellHeight={160} cols={3}>
         {tileData.map(tile => (
           <GridListTile key={tile.img} cols={tile.cols || 1}>
-            <img src={tile.img} alt={tile.title} />
+            <img src={tile.img} alt={tile.title} onClick={handleClickOpen} />
           </GridListTile>
         ))}
       </GridList>
+      <SimpleDialog image={image} open={open} onClose={handleClose} />
     </MainDiv>
   );
 };
