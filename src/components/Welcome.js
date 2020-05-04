@@ -1,13 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import BaseballIcon from "../img/ball-of-baseball.png";
-import Header from "./Header";
 import Contact from "./Contact";
 
 const Welcome = ({ phoneCall, messageSend, changePage }) => {
   return (
     <MainDiv>
-      <Header changePage={changePage} />
       <div>
         <Contents>
           <WelcomeTitle>
@@ -97,17 +95,18 @@ const Welcome = ({ phoneCall, messageSend, changePage }) => {
 const ParentContacts = styled.div`
   width: 50%;
   display: inline-block;
-  margin-top: 10%;
+  margin-top: 37px;
 `;
 
 const WelcomeTitle = styled.div`
   margin-bottom: 20px;
+  padding-top: 10%;
 `;
 const MainDiv = styled.div`
   max-width: 425px;
   text-align: center;
   margin: auto;
-  height: 100vh;
+  height: 91vh;
   max-height: 812px;
   background-color: #f9f8ef;
 `;
@@ -122,7 +121,6 @@ const ParentContactTitle = styled.div`
 `;
 
 const Contents = styled.div`
-  margin-top: 10%;
   margin-bottom: 10%;
 `;
 

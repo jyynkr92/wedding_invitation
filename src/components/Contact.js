@@ -69,7 +69,7 @@ const ParnetDiv = styled.div`
 
 const Name = styled.span`
   margin-left: 10px;
-  margin-right: ${props => (props.isParent ? "10px" : "10%")};
+  margin-right: ${(props) => (props.isParent ? "10px" : "10%")};
 `;
 
 export default Contact;

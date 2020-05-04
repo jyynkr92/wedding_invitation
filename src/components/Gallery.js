@@ -3,21 +3,19 @@ import styled from "styled-components";
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 import BaseballIcon from "../img/ball-of-baseball.png";
-import Header from "./Header";
 import SimpleDialog from "./SimpleDialog";
 
-const Gallery = ({ changePage }) => {
+const Gallery = () => {
   const [open, setOpen] = React.useState(false);
   const [image, setImage] = React.useState("");
 
-  const handleClickOpen = e => {
+  const handleClickOpen = (e) => {
     const { src } = e.target;
-    console.log(src);
     setImage(src);
     setOpen(true);
   };
 
-  const handleClose = value => {
+  const handleClose = (value) => {
     setOpen(false);
   };
 
@@ -29,11 +27,10 @@ const Gallery = ({ changePage }) => {
     { img: "./wedding/pic5.jpeg", cols: 1 },
     { img: "./wedding/pic6.jpeg", cols: 2 },
     { img: "./wedding/pic8.jpeg", cols: 1 },
-    { img: "./wedding/pic7.jpeg", cols: 2 }
+    { img: "./wedding/pic7.jpeg", cols: 2 },
   ];
   return (
     <MainDiv>
-      <Header changePage={changePage} />
       <MenuName>
         <IconSpan>
           <Deliminator src={BaseballIcon} alt="deliminator" />
@@ -44,7 +41,7 @@ const Gallery = ({ changePage }) => {
         </IconSpan>
       </MenuName>
       <GridList cellHeight={160} cols={3}>
-        {tileData.map(tile => (
+        {tileData.map((tile) => (
           <GridListTile key={tile.img} cols={tile.cols || 1}>
             <img src={tile.img} alt={tile.title} onClick={handleClickOpen} />
           </GridListTile>
@@ -59,7 +56,7 @@ const MainDiv = styled.div`
   max-width: 425px;
   text-align: center;
   margin: auto;
-  height: 100vh;
+  height: 111vh;
   max-height: 812px;
   background-color: #f9f8ef;
 `;

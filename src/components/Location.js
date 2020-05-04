@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import BaseballIcon from "../img/ball-of-baseball.png";
-import Header from "./Header";
 // import LocationImg from "../img/location.png";
-import LocationImg from "../img/location2.png";
+import LocationImg from "../img/kakaomap.png";
 import kakaonavi from "../img/kakaonavi_btn_small.png";
 import tmapIcon from "../img/tmap_icon.png";
+import BusIcon from "../img/bus.png";
+import SubwayIcon from "../img/subway.png";
+import ParkingIcon from "../img/parking.png";
 
 class Location extends Component {
   findMap = () => {
@@ -28,7 +30,6 @@ class Location extends Component {
   render() {
     return (
       <MainDiv>
-        <Header changePage={this.props.changePage} />
         <div>
           <IconSpan>
             <Deliminator src={BaseballIcon} alt="deliminator" />
@@ -39,10 +40,11 @@ class Location extends Component {
           </IconSpan>
         </div>
         <MapDiv id="map">
-          <img src={LocationImg} alt="bliss" onClick={this.clickMap} />
+          {/* <img src={LocationImg} alt="bliss" onClick={this.clickMap} /> */}
         </MapDiv>
         <Navigation>
           <div>
+            <img id="kakaomap" src={LocationImg} onClick={this.clickMap} alt="kakaomap" />{" "}
             <img id="kakao" src={kakaonavi} onClick={this.findMap} alt="kakaonavi" />{" "}
             <img id="tmap" src={tmapIcon} onClick={this.tmapNavi} alt="tmap" />
           </div>
@@ -55,19 +57,22 @@ class Location extends Component {
         <Transportation>
           <TransportationTitle>교통안내</TransportationTitle>
           <Transport>
-            # 주차장 안내
+            <img src={ParkingIcon} alt="parking" />
+            &nbsp;&nbsp;주차장 안내
             <br />
             &nbsp;&nbsp;- 전용 주차장 이용(2시 간 무료)
           </Transport>
           <Transport>
-            # 지하철
+            <img src={SubwayIcon} alt="subway" />
+            &nbsp;&nbsp;지하철
             <br />
             &nbsp;&nbsp;서울 5호선 "발산역" 하차 5번 출구
             <br />
             &nbsp;&nbsp;도보이용 : 1분거리내
           </Transport>
           <Transport>
-            # 버스 &nbsp;&nbsp;"발산역 하차"
+            <img src={BusIcon} alt="bus" />
+            &nbsp;&nbsp;버스 &nbsp;&nbsp;"발산역 하차"
             <br />
             &nbsp;&nbsp;- 간선(파랑)601, 605, 661
             <br />
@@ -90,6 +95,7 @@ const MainDiv = styled.div`
   text-align: center;
   margin: auto;
   background-color: #f9f8ef;
+  height: 131vh;
 `;
 
 const Title = styled.span`
@@ -108,11 +114,8 @@ const Deliminator = styled.img`
 
 const MapDiv = styled.div`
   width: 100%;
-  margin-top: 10px;
-
-  & img {
-    width: 90%;
-  }
+  height: 400px;
+  margin: 10px 0;
 `;
 
 const Navigation = styled.div`
@@ -132,7 +135,7 @@ const Transportation = styled.div`
   width: 90%;
   margin: auto;
   text-align: left;
-  margin-top: 10px;
+  margin-top: 20px;
 `;
 
 const TransportationTitle = styled.div`
@@ -150,7 +153,10 @@ const Floor = styled.div`
 const Address = styled.div``;
 
 const Transport = styled.div`
-  margin-bottom: 10px;
+  margin-top: 17px;
+  & img {
+    width: 25px;
+  }
 `;
 
 export default Location;
