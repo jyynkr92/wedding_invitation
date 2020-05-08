@@ -5,15 +5,15 @@ const MainPage = () => {
   return (
     <MainDiv>
       <Date>06.20</Date>
-      <Image>
-        <TopImage src="./wedding/pic6.jpeg" alt="test" />
+      <Image className="fadeImg">
+        <TopImage classNmae="bottom" src="./wedding/pic6.jpeg" alt="wedding1" />
       </Image>
       <Contents>
         <Couple>유은정 & 구동수</Couple>
         <Message>Love does not consist in gazing at each other,</Message>
         <Message>but looking together in the same direction</Message>
       </Contents>
-      <CenterLine />
+      <CenterLine> &nbsp; </CenterLine>
       <Location>
         <div>2020년 06월 20일 토요일 오후 1시 20분</div>
         <div>블리스 웨딩컨벤션 블리스홀 / 4층</div>
@@ -32,11 +32,16 @@ const MainDiv = styled.div`
   background-color: #f9f8ef;
 `;
 const Location = styled.div`
-  font-size: 13px;
+  font-size: 15px;
   height: 8%;
+  font-weight: bold;
+
+  & div {
+    margin-top: 7px;
+  }
 `;
 const Couple = styled.div`
-  font-size: 17px;
+  font-size: 21px;
   margin-bottom: 10px;
   margin-top: 10px;
 `;
@@ -62,7 +67,7 @@ const Date = styled.div`
 
 const CenterLine = styled.div`
   border-left: 1px solid #b1a6a6;
-  height: 14%;
+  height: 110px;
   margin-left: calc(50% - 3px);
   margin-top: 8%;
   margin-bottom: 8%;

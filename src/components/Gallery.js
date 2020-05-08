@@ -28,6 +28,7 @@ const Gallery = () => {
     { img: "./wedding/pic6.jpeg", cols: 2 },
     { img: "./wedding/pic8.jpeg", cols: 1 },
     { img: "./wedding/pic7.jpeg", cols: 2 },
+    { img: "./wedding/pic9.jpg", cols: 1 },
   ];
   return (
     <MainDiv>
@@ -56,9 +57,9 @@ const MainDiv = styled.div`
   max-width: 425px;
   text-align: center;
   margin: auto;
-  height: 111vh;
   max-height: 812px;
   background-color: #f9f8ef;
+  padding-top: 75px;
 `;
 
 const MenuName = styled.div`

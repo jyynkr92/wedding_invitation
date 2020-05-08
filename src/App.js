@@ -9,7 +9,7 @@ import Location from "./components/Location";
 import Visitors from "./components/Visitors";
 import { firestore } from "./apis/visitor";
 import styled from "styled-components";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button, Dialog } from "@material-ui/core";
 
 dotenv.config();
 
@@ -60,24 +60,27 @@ class App extends Component {
   getMessageList = () => {
     const self = this;
 
-    firestore.collection("invitation").onSnapshot(function (snapshot) {
-      snapshot.docChanges().forEach((change) => {
-        const childData = change.doc.data();
+    firestore
+      .collection("invitation")
+      .orderBy("date")
+      .onSnapshot(function (snapshot) {
+        snapshot.docChanges().forEach((change) => {
+          const childData = change.doc.data();
 
-        if (change.type === "added") {
-          self.setState({
-            messageList: self.state.messageList.concat(childData),
-          });
-        } else if (change.type === "removed") {
-          self.setState({
-            modal: false,
-            messageList: self.state.messageList.filter((message) => message.id !== childData.id),
-          });
-        } else if (change.type === "modified") {
-          console.log("modified");
-        }
+          if (change.type === "added") {
+            self.setState({
+              messageList: self.state.messageList.concat(childData),
+            });
+          } else if (change.type === "removed") {
+            self.setState({
+              modal: false,
+              messageList: self.state.messageList.filter((message) => message.id !== childData.id),
+            });
+          } else if (change.type === "modified") {
+            console.log("modified");
+          }
+        });
       });
-    });
   };
 
   addMessageList = () => {
@@ -143,6 +146,16 @@ class App extends Component {
     });
   };
 
+  phoneCall = (e) => {
+    const phone = e.target.getAttribute("data-phone");
+    window.open("tel:" + phone);
+  };
+
+  messageSend = (e) => {
+    const phone = e.target.getAttribute("data-phone");
+    window.open("sms:" + phone);
+  };
+
   render() {
     const {
       phoneCall,
@@ -170,8 +183,7 @@ class App extends Component {
           text={text}
         />
         {modal && (
-          <>
-            <SwipeWrapper>&nbsp;</SwipeWrapper>
+          <Dialog onClose={modalChange} aria-labelledby="simple-dialog-title" open={modalChange}>
             <Wrapper>
               <ModalTitle>비밀번호를 입력하세요.</ModalTitle>
               <TextField
@@ -190,46 +202,34 @@ class App extends Component {
                 </Button>
               </ButtonWrapper>
             </Wrapper>
-          </>
+          </Dialog>
         )}
       </>
     );
   }
 }
 
-const SwipeWrapper = styled.div`
-  position: fixed;
-  right: 0;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  text-align: center;
-  background-color: rgb(146, 146, 146, 0.5);
-  line-height: 50;
-`;
-
 const Wrapper = styled.div`
   background-color: white;
-  position: fixed;
-  width: 331px;
-  height: 220px;
-  left: 10%;
-  top: 25%;
-  z-index: 2;
+  width: 250px;
+  height: 186px;
   text-align: center;
   border-radius: 25px;
 `;
 
 const ModalTitle = styled.div`
   font-weight: bold;
-  padding: 20px 0;
+  padding: 14px 0;
   background-color: #f9f8ef;
-  border-radius: 25px 25px 0 0;
-  margin-bottom: 25px;
+  margin-bottom: 14px;
 `;
 
 const ButtonWrapper = styled.div`
-  margin-top: 25px;
+  margin-top: 17px;
+
+  & button:first-child {
+    margin-right: 10px;
+  }
 `;
 
 export default App;

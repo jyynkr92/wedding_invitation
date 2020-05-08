@@ -8,6 +8,7 @@ import tmapIcon from "../img/tmap_icon.png";
 import BusIcon from "../img/bus.png";
 import SubwayIcon from "../img/subway.png";
 import ParkingIcon from "../img/parking.png";
+import DotImg from "../img/dot.png";
 
 class Location extends Component {
   findMap = () => {
@@ -44,45 +45,63 @@ class Location extends Component {
         </MapDiv>
         <Navigation>
           <div>
-            <img id="kakaomap" src={LocationImg} onClick={this.clickMap} alt="kakaomap" />{" "}
-            <img id="kakao" src={kakaonavi} onClick={this.findMap} alt="kakaonavi" />{" "}
+            <img id="kakaomap" src={LocationImg} onClick={this.findMap} alt="kakaomap" />{" "}
+            <img id="kakao" src={kakaonavi} onClick={this.clickMap} alt="kakaonavi" />{" "}
             <img id="tmap" src={tmapIcon} onClick={this.tmapNavi} alt="tmap" />
           </div>
         </Navigation>
         <WeddingLocation>
-          <Floor>4층 블리스홀</Floor>
-          <Address>서울시 강서구 공항대로 298 블리스웨딩컨벤션</Address>
+          <Floor>블리스웨딩컨벤션 4층 블리스홀</Floor>
+          <Address>서울시 강서구 공항대로 298</Address>
         </WeddingLocation>
-        <div>02.3664.6006</div>
+        <div>Tel. 02.3664.6006</div>
         <Transportation>
-          <TransportationTitle>교통안내</TransportationTitle>
           <Transport>
-            <img src={ParkingIcon} alt="parking" />
-            &nbsp;&nbsp;주차장 안내
-            <br />
-            &nbsp;&nbsp;- 전용 주차장 이용(2시 간 무료)
+            <Line>
+              <img src={ParkingIcon} alt="parking" />
+              &nbsp;&nbsp;주차장 안내
+            </Line>
+            <img className="dot" src={DotImg} alt="dot" />
+            &nbsp;전용 주차장 이용(2시 간 무료)
           </Transport>
           <Transport>
-            <img src={SubwayIcon} alt="subway" />
-            &nbsp;&nbsp;지하철
-            <br />
-            &nbsp;&nbsp;서울 5호선 "발산역" 하차 5번 출구
-            <br />
-            &nbsp;&nbsp;도보이용 : 1분거리내
+            <Line>
+              <img src={SubwayIcon} alt="subway" />
+              &nbsp;&nbsp;지하철 안내
+            </Line>
+            <Line>
+              <img className="dot" src={DotImg} alt="dot" />
+              &nbsp;서울 5호선 "발산역" 하차 5번 출구
+            </Line>
+            <img className="dot" src={DotImg} alt="dot" />
+            &nbsp;도보이용 : 1분거리내
           </Transport>
           <Transport>
-            <img src={BusIcon} alt="bus" />
-            &nbsp;&nbsp;버스 &nbsp;&nbsp;"발산역 하차"
-            <br />
-            &nbsp;&nbsp;- 간선(파랑)601, 605, 661
-            <br />
-            &nbsp;&nbsp;- 지선(초록)6630, 6632, 6642, 6712
-            <br />
-            &nbsp;&nbsp;- 광역 3000, 8000
-            <br />
-            &nbsp;&nbsp;- 공항 6000, 6003, 6008
-            <br />
-            &nbsp;&nbsp;- 경기 60, 60-3, 69, 88
+            <Line>
+              <img src={BusIcon} alt="bus" />
+              &nbsp;&nbsp;버스 안내
+            </Line>
+            {/* <Line>&nbsp; &nbsp; "발산역 하차"</Line> */}
+            <Line>
+              <img className="dot" src={DotImg} alt="dot" />
+              &nbsp; 간선(파랑)601, 605, 661
+            </Line>
+            <Line>
+              <img className="dot" src={DotImg} alt="dot" />
+              &nbsp; 지선(초록)6630, 6632, 6642, 6712
+            </Line>
+            <Line>
+              <img className="dot" src={DotImg} alt="dot" />
+              &nbsp; 광역 3000, 8000
+            </Line>
+            <Line>
+              <img className="dot" src={DotImg} alt="dot" />
+              &nbsp; 공항 6000, 6003, 6008
+            </Line>
+            <Line>
+              <img className="dot" src={DotImg} alt="dot" />
+              &nbsp; 경기 60, 60-3, 69, 88
+            </Line>
           </Transport>
         </Transportation>
       </MainDiv>
@@ -95,7 +114,7 @@ const MainDiv = styled.div`
   text-align: center;
   margin: auto;
   background-color: #f9f8ef;
-  height: 131vh;
+  padding-top: 75px;
 `;
 
 const Title = styled.span`
@@ -144,18 +163,30 @@ const TransportationTitle = styled.div`
 `;
 
 const WeddingLocation = styled.div`
-  margin-top: 10px;
+  margin-top: 16px;
 `;
 
 const Floor = styled.div`
   font-weight: bold;
+  margin-bottom: 7px;
+  font-size: 18px;
 `;
 const Address = styled.div``;
 
+const Line = styled.div`
+  margin-bottom: 7px;
+`;
+
 const Transport = styled.div`
   margin-top: 17px;
+
   & img {
-    width: 25px;
+    width: 21px;
+  }
+
+  & img.dot {
+    width: 12px;
+    margin-left: 13px;
   }
 `;
 

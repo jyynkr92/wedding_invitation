@@ -14,9 +14,9 @@ const Contact = ({ position, name, phone, isParent, phoneCall, messageSend }) =>
       <Name isParent={isParent}>{name}</Name>
       {isParent ? (
         <ParnetDiv>
-          <IconSpan>
+          <ContactSpan>
             <ContactIcon onClick={phoneCall} src={PhoneIcon} alt="deliminator" data-phone={phone} />
-          </IconSpan>
+          </ContactSpan>
           <IconSpan>
             <ContactIcon
               onClick={messageSend}
@@ -28,9 +28,9 @@ const Contact = ({ position, name, phone, isParent, phoneCall, messageSend }) =>
         </ParnetDiv>
       ) : (
         <>
-          <IconSpan>
+          <ContactSpan>
             <ContactIcon onClick={phoneCall} src={PhoneIcon} alt="deliminator" data-phone={phone} />
-          </IconSpan>
+          </ContactSpan>
           <IconSpan>
             <ContactIcon
               onClick={messageSend}
@@ -54,6 +54,11 @@ const IconSpan = styled.span`
   margin-right: 10px;
 `;
 
+const ContactSpan = styled.span`
+  vertical-align: middle;
+  margin-right: 22px;
+`;
+
 const Deliminator = styled.img`
   width: 15px;
 `;
@@ -69,7 +74,7 @@ const ParnetDiv = styled.div`
 
 const Name = styled.span`
   margin-left: 10px;
-  margin-right: ${(props) => (props.isParent ? "10px" : "10%")};
+  margin-right: ${(props) => (props.isParent ? "10px" : "16%")};
 `;
 
 export default Contact;

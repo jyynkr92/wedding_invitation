@@ -14,6 +14,14 @@ const useStyles = makeStyles((theme) => ({
       marginRight: theme.spacing(1),
       width: "44%",
     },
+    "& .MuiInputBase-input": {
+      fontFamily: "Nanum Myeongjo,malgun gothic",
+      fontSize: "13px",
+    },
+    "& .MuiButton-root": {
+      fontFamily: "Nanum Myeongjo,malgun gothic",
+      fontSize: "13px",
+    },
   },
 }));
 
@@ -24,7 +32,7 @@ const dateFormat = (str, format) => {
       case "yyyy":
         return date.getFullYear();
       case "MM":
-        return date.getMonth() + 1 < 10 ? "0" + date.getMonth() : date.getMonth();
+        return date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
       case "dd":
         return date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
       case "HH":
@@ -102,11 +110,11 @@ const Visitors = ({
               fullWidth
               placeholder=""
               multiline
-              rows={4}
+              rows={3}
               variant="outlined"
             />
           </div>
-          <div>
+          <div className={classes.root}>
             <Button variant="outlined" onClick={addMessageList}>
               축하글 남기기
             </Button>
@@ -134,10 +142,9 @@ const MainDiv = styled.div`
   max-width: 425px;
   text-align: center;
   margin: auto;
-  height: 100vh;
-  max-height: 812px;
   background-color: #f9f8ef;
-  padding-bottom: 45px;
+  padding-bottom: 52px;
+  padding-top: 75px;
 `;
 
 const Title = styled.span`
@@ -155,9 +162,10 @@ const Deliminator = styled.img`
 `;
 
 const WriteWrapper = styled.div`
-  margin: 25px 0;
+  margin: 25px 0 45px;
   text-align: center;
   text-align: -webkit-center;
+
   & > div {
     width: 70%;
     padding: 10px 25px 1px;
@@ -177,7 +185,7 @@ const ReadWrapper = styled.div`
 `;
 
 const WriteDate = styled.span`
-  font-size: 13px;
+  font-size: 11px;
   color: #505050;
 `;
 
@@ -190,13 +198,14 @@ const Name = styled.span`
   width: 20%;
   height: 35px;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;
 `;
 
 const Contents = styled.div`
   margin: 6px 0;
   padding-bottom: 6px;
   border-bottom: 1px solid #d9d9d9;
+  font-size: 14px;
 `;
 
 const Delete = styled.span`

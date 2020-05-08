@@ -56,7 +56,7 @@ const Welcome = ({ phoneCall, messageSend, changePage }) => {
               isParent={true}
               phoneCall={phoneCall}
               messageSend={messageSend}
-              phone=""
+              phone="01052439214"
             />
             <Contact
               position="어머니"
@@ -64,7 +64,7 @@ const Welcome = ({ phoneCall, messageSend, changePage }) => {
               isParent={true}
               phoneCall={phoneCall}
               messageSend={messageSend}
-              phone=""
+              phone="01099889214"
             />
           </ParentContacts>
           <ParentContacts>
@@ -100,15 +100,15 @@ const ParentContacts = styled.div`
 
 const WelcomeTitle = styled.div`
   margin-bottom: 20px;
-  padding-top: 10%;
+  padding-top: 75px;
 `;
 const MainDiv = styled.div`
   max-width: 425px;
   text-align: center;
   margin: auto;
-  height: 91vh;
   max-height: 812px;
   background-color: #f9f8ef;
+  padding-top: 30px;
 `;
 
 const Title = styled.span`
